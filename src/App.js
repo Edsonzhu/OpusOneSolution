@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import styled from 'styled-components';
+import ReactTooltip from "react-tooltip";
 
-function App() {
+// Components
+import ChoroplethMap from './components/ChoroplethMap'
+
+const Header = styled.h1`
+  text-align: center;
+`
+
+const App = () => {
+  const [info, setInfo] = useState("");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header>CO2 Emission By Year</Header>
+      <ChoroplethMap setTooltipContent={setInfo} />
+      <ReactTooltip>{info}</ReactTooltip>
+    </>
   );
 }
 
